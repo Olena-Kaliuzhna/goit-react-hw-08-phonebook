@@ -1,5 +1,5 @@
 import actions from './phoneBook-actions';
-import api from '../../service/contacts-api';
+import api from '../../service/phoneBook-api';
 
 const fetchContacts = () => async dispatch => {
   dispatch(actions.fetchContactsRequest());
@@ -7,7 +7,7 @@ const fetchContacts = () => async dispatch => {
     const { data } = await api.fetchContacts();
     dispatch(actions.fetchContactsSuccess(data));
   } catch (error) {
-    dispatch(actions.fetchContactsError(error));
+    dispatch(actions.fetchContactsError(error.message));
   }
 };
 
@@ -19,7 +19,7 @@ const addContact = (name, number) => async dispatch => {
     const { data } = await api.addContact(contact);
     dispatch(actions.addContactSuccess(data));
   } catch (error) {
-    dispatch(actions.addContactError(error));
+    dispatch(actions.addContactError(error.message));
   }
 };
 
@@ -29,7 +29,7 @@ const deleteContact = id => async dispatch => {
     await api.deleteContact(id);
     dispatch(actions.deleteContactSuccess(id));
   } catch (error) {
-    dispatch(actions.deleteContactError(error));
+    dispatch(actions.deleteContactError(error.message));
   }
 };
 

@@ -10,7 +10,6 @@ class ContactForm extends Component {
   static propTypes = {
     contacts: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
         name: PropTypes.string,
         number: PropTypes.string,
       }),

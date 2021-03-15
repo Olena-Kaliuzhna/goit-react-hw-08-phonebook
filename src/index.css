@@ -9,9 +9,9 @@ html {
 }
 
 body {
-  background-color: #77f39c;
   margin: 0 auto;
-  padding: 15px;
+  /* padding: 15px 0; */
+  background-color: #77f39c;
 }
 ul {
   list-style: none;

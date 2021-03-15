@@ -8,7 +8,7 @@ import ContactListItem from './ContactListItem';
 import s from './Contact.module.css';
 import anim from '../animation.module.css';
 
-function ContactList({ contacts, onDeleteContact }) {
+function ContactList({ contacts, onDeleteContact, onUpdateContact }) {
   return (
     <TransitionGroup component="ul" className={s.wrapper}>
       {contacts.map(({ id, name, number }) => {
@@ -20,6 +20,7 @@ function ContactList({ contacts, onDeleteContact }) {
               number={number}
               unmountOnExit
               onDelete={() => onDeleteContact(id)}
+              onUpdate={() => onUpdateContact(id)}
             />
           </CSSTransition>
         );
@@ -41,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      // id: PropTypes.number.isRequired,
       name: PropTypes.string,
       number: PropTypes.string,
     }),

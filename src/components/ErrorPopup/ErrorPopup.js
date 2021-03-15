@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import phoneBookSelectors from '../../redux/phoneBook/phoneBook-selectors';
 import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
+import authSelectors from '../../redux/auth/auth-selectors';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import s from './ErrorPopup.module.css';
@@ -15,7 +16,7 @@ class ErrorPopup extends Component {
   };
 
   componentDidMount() {
-    if (this.props.error) {
+    if (this.props.error || this.props.authError) {
       setTimeout(() => {
         this.props.clearError();
       }, 3000);
@@ -40,6 +41,7 @@ class ErrorPopup extends Component {
 
 const mapStateToProps = state => ({
   error: phoneBookSelectors.getError(state),
+  authError: authSelectors.getError(state),
 });
 
 const mapDispatchToProps = dispatch => ({
